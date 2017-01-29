@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace BankAccount
 {
     //Main Account ID's will be different from savings ID, Reserve ID, and Checking ID
+    //This part is barebones because it just passes the information to the child accounts
     class BaseAccount
     {
         //seting up the vars in the base

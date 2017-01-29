@@ -9,6 +9,7 @@ namespace BankAccount
 {
     class CheckingAccount : BaseAccount
     {
+        //vars
         private string checkingID;
         private double checkingTotal;
         protected double checkingAdd;
@@ -54,24 +55,30 @@ namespace BankAccount
                 Console.WriteLine("(2) Take out money from the account");
                 Console.WriteLine("(3) Check Account Balance");
                 Console.WriteLine("(4) Print Reciept and Quit");
+                Console.WriteLine("Enter your choice below");
                 checkingChoice = int.Parse(Console.ReadLine());
                 if (checkingChoice == 1)
                 {
+                    checkingLoop = 1;
                     CheckingAddition();
                 }
                 else if (checkingChoice == 2)
                 {
+                    checkingLoop = 1;
                     CheckingSubtraction();
                 }
                 else if (checkingChoice == 3)
                 {
+                    //Displays account info
+                    checkingLoop = 1;
                     Console.WriteLine(firstName + " " + lastName);
+                    Console.WriteLine("Checking Account");
                     Console.WriteLine("Account Number " + checkingID);
                     Console.WriteLine(DateTime.Now);
                     Console.WriteLine(recieptChecking);
+                    Console.WriteLine("------------------");
+                    Console.WriteLine(CheckingCurrency(checkingTotal));
                     System.Threading.Thread.Sleep(3000);
-
-
                 }
                 else
                 {
@@ -80,7 +87,7 @@ namespace BankAccount
                     Console.Clear();
                 }
             } while (checkingLoop == 1);
-        }
+        }//end menu method
         public void CheckingAddition()
         {
             Console.WriteLine("How much do you want to add to your Checking");
@@ -91,6 +98,8 @@ namespace BankAccount
             
             addCheckMoney = string.Format("{0:C}", checkingAdd);
             recieptChecking = recieptChecking + addCheckMoney + " + " + DateTime.Now + "  " + CheckingCurrency(checkingTotal) + "\n";
+            Console.WriteLine(firstName + " " + lastName + "'s Account");
+            Console.WriteLine("Account type: Checking");
             Console.WriteLine(recieptChecking);
             System.Threading.Thread.Sleep(2000);
         }//end addition method
@@ -105,6 +114,8 @@ namespace BankAccount
             {
                 checkingTotal = checkingTotal - checkingSub;
                 recieptChecking = recieptChecking + subCheckMoney + " - " + DateTime.Now + "  " + CheckingCurrency(checkingTotal) + "\n";
+                Console.WriteLine(firstName + " " + lastName + "'s Account");
+                Console.WriteLine("Account type: Checking");
                 Console.WriteLine(recieptChecking);
                 System.Threading.Thread.Sleep(2000);
             }
@@ -113,7 +124,7 @@ namespace BankAccount
                 Console.WriteLine("You cannot take out that much, sorry");
                 System.Threading.Thread.Sleep(2000);
             }
-        }
+        }//end subraction method
         //Changes the string to correct currency
         public string CheckingCurrency(double checkingTotal)
         {
@@ -131,12 +142,9 @@ namespace BankAccount
                 writerCheck.WriteLine("Account ID:" + accountID);
                 writerCheck.WriteLine("Checking ID:" + checkingID);
                 writerCheck.WriteLine(reciept);
-
-
-
             }
 
-        }
+        }//end CheckReciept
 
     }//end class checking
 }

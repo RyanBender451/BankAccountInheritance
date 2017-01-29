@@ -9,11 +9,12 @@ namespace BankAccount
 {
     class SavingsAccount : BaseAccount
     {
+        //vars used
         private string savingsID;
         private double savingsTotal;
         protected double savingsAdd;
         protected double savingsSub;
-        public int SavingsChoice;
+        public int savingsChoice;
         public string addSaveMoney;
         public string subSaveMoney;
         public string recieptSavings;
@@ -40,7 +41,7 @@ namespace BankAccount
             this.savingsID = savingsID;
             this.savingsTotal = savingsTotal;
         }
-        //methods
+        //Methods
         public void SavingMenu()
         {
             //do-while loop for multiple iterations through the menu
@@ -53,25 +54,31 @@ namespace BankAccount
                 Console.WriteLine("(2) Take out money from the account");
                 Console.WriteLine("(3) See how much is in your Account");
                 Console.WriteLine("(4) Quit and Print out Reciept");
-                SavingsChoice = int.Parse(Console.ReadLine());
-                if (SavingsChoice == 1)
+                Console.WriteLine("Enter your choice below");
+                savingsChoice = int.Parse(Console.ReadLine());
+                if (savingsChoice == 1)
                 {
+                    savingLoop = 1;
                     SavingsAddition();
                 }
-                else if (SavingsChoice == 2)
+                else if (savingsChoice == 2)
                 {
+                    savingLoop = 1;
                     SavingsSubtraction();
                 }
-                else if (SavingsChoice == 3)
+                else if (savingsChoice == 3)
                 {
+                    //Displays account info
+                    savingLoop = 1;
                     Console.WriteLine(firstName + " " + lastName);
-                    Console.WriteLine("Account Number "+ SavingsID);
+                    Console.WriteLine("Savings Account");
+                    Console.WriteLine("Account Number "+ savingsID);
                     Console.WriteLine(DateTime.Now);
                     Console.WriteLine(recieptSavings);
-                    SavingCurrency(savingsTotal);
+                    Console.WriteLine("------------------");
+                    Console.WriteLine(SavingCurrency(savingsTotal));
+             
                     System.Threading.Thread.Sleep(3000);
-
-
                 }
                 else
                 {
@@ -82,22 +89,22 @@ namespace BankAccount
 
             } while (savingLoop == 1);
 
-        }
+        }//end menu
         public void SavingsAddition()
         {
-           
             Console.WriteLine("How much do you want to add to your savings");
             addSaveMoney = Console.ReadLine();
             savingsAdd = double.Parse(addSaveMoney);
             savingsTotal = savingsTotal + savingsAdd;
-          //  SavingCurrency(savingsTotal);
 
             addSaveMoney = string.Format("{0:C}", savingsAdd);
             recieptSavings = recieptSavings  + addSaveMoney + " + " + DateTime.Now + "  " + SavingCurrency(savingsTotal) +"\n" ;
+            Console.WriteLine(firstName + " "+ lastName + "'s Account" );
+            Console.WriteLine("Account type: Savings");
             Console.WriteLine(recieptSavings);
             System.Threading.Thread.Sleep(2000);
             
-        }
+        }//end addition
         public void SavingsSubtraction()
         {
             Console.WriteLine("How much to take out of Savings?");
@@ -111,7 +118,9 @@ namespace BankAccount
                
                 
                recieptSavings = recieptSavings + subSaveMoney + " - " + DateTime.Now + "  "+ SavingCurrency(savingsTotal) + "\n";
-               Console.WriteLine(recieptSavings);
+                Console.WriteLine(firstName + " " + lastName + "'s Account");
+                Console.WriteLine("Account type: Savings");
+                Console.WriteLine(recieptSavings);
                System.Threading.Thread.Sleep(2000);
             }
             else
@@ -121,13 +130,13 @@ namespace BankAccount
             }
            
 
-        }
+        }//end subrtaction
         public string SavingCurrency(double savingsTotal)
         {
          string totalSavings= string.Format("Total in Savings: {0:C}", savingsTotal);
             // Console.WriteLine(totalSavings);
             return totalSavings;
-        }
+        }//end currency
         public void SavingReciept(string reciept)
         {
             Console.WriteLine(recieptSavings);
@@ -139,11 +148,8 @@ namespace BankAccount
                 writerSave.WriteLine("Account ID:" + accountID);
                 writerSave.WriteLine("Savings ID:" + savingsID);
                 writerSave.WriteLine(reciept);
-
-
-
             }
-        }
+        }//end savingreciept
     
     }//end Saving class
 }

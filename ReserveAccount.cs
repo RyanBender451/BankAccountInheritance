@@ -9,6 +9,7 @@ namespace BankAccount
 {
     class ReserveAccount : BaseAccount
     {
+        //vars used
         private string reserveID;
         private double reserveTotal;
         protected double reserveAdd;
@@ -30,7 +31,7 @@ namespace BankAccount
             get { return this.reserveTotal; }
             set { this.reserveTotal = value; }
         }
-        // constructors
+        // constructors 
         public ReserveAccount():base()
         {
 
@@ -40,6 +41,7 @@ namespace BankAccount
             this.reserveID = reserveID;
             this.reserveTotal = reserveTotal;
         }
+        //Methods
         public void ReserveMenu()
         {
             //do-while loop for multiple iterations through the menu
@@ -52,24 +54,30 @@ namespace BankAccount
                 Console.WriteLine("(2) Take out money from the account");
                 Console.WriteLine("(3) See how much is in your Account");
                 Console.WriteLine("(4) Print Reciept and Quit");
+                Console.WriteLine("Enter your choice below");
                 reserveChoice = int.Parse(Console.ReadLine());
                 if (reserveChoice == 1)
                 {
+                    reserveLoop = 1;
                     ReserveAddition();
                 }
                 else if (reserveChoice == 2)
                 {
+                    reserveLoop = 1;
                     ReserveSubtraction();
                 }
                 else if (reserveChoice == 3)
                 {
+                    //Displays account info
+                    reserveLoop = 1;
                     Console.WriteLine(firstName + " " + lastName);
+                    Console.WriteLine("Reserve Account");
                     Console.WriteLine("Account Number " + reserveID);
                     Console.WriteLine(DateTime.Now);
                     Console.WriteLine(recieptReserve);
+                    Console.WriteLine("------------------");
+                    Console.WriteLine(ReserveCurrency(reserveTotal));
                     System.Threading.Thread.Sleep(3000);
-
-
                 }
                 else
                 {
@@ -77,25 +85,23 @@ namespace BankAccount
                     reserveLoop = 0;
                     Console.Clear();
                 }
-
             } while (reserveLoop == 1);
         
-        }
+        }//end Menu
         public void ReserveAddition()
         {
-
             Console.WriteLine("How much do you want to add to your Reserve");
-            //ReserveCurrency(reserveTotal);
             addReserveMoney = Console.ReadLine();
             reserveAdd = double.Parse(addReserveMoney);
             reserveTotal = reserveTotal + reserveAdd;
-            //ReserveCurrency(reserveTotal);
             addReserveMoney = string.Format("{0:C}", reserveAdd);
             recieptReserve = recieptReserve + addReserveMoney + " + " + DateTime.Now + "  " + ReserveCurrency(reserveTotal) + "\n";
+            Console.WriteLine(firstName + " " + lastName + "'s Account");
+            Console.WriteLine("Account type: Reserve");
             Console.WriteLine(recieptReserve);
             System.Threading.Thread.Sleep(2000);
 
-        }
+        }//end RerserveAddition
         public void ReserveSubtraction()
         {
             Console.WriteLine("How much to take out of the Reserve Account?");
@@ -107,23 +113,23 @@ namespace BankAccount
             {
                 reserveTotal = reserveTotal - reserveSub;
                 recieptReserve = recieptReserve + subReserveMoney + " - " + DateTime.Now + "  " + ReserveCurrency(reserveTotal) + "\n";
+                Console.WriteLine(firstName + " " + lastName + "'s Account");
+                Console.WriteLine("Account type: Reserve");
                 Console.WriteLine(recieptReserve);
                 System.Threading.Thread.Sleep(2000);
             }
-
             else
             {
                 Console.WriteLine("You cannot take out that much, sorry");
                 System.Threading.Thread.Sleep(2000);
             }
-
-
-        }
+        }//end reserve subtraction
         public string ReserveCurrency(double reserveTotal)
         {
+            //formats the account amount to us currency format
             string totalReserve = string.Format("Total in Savings: {0:C}", reserveTotal);
             return totalReserve;
-        }
+        }//ends ReserveCurrenct
         public void ReserveReciept(string reciept)
         {
             Console.WriteLine(recieptReserve);
@@ -135,10 +141,7 @@ namespace BankAccount
                 writerReserve.WriteLine("Account ID:" + accountID);
                 writerReserve.WriteLine("Reserve ID:" + reserveID);
                 writerReserve.WriteLine(reciept);
-
-
-
             }
-        }
+        }//end ReserveReciept
     }//end ReserveAccount
 }
