@@ -1,0 +1,8 @@
+Bob Paulson
+Account ID:1015568
+Savings ID:1015568SA
+ $234.67 + 1/28/2017 11:58:24 PM  Total in Savings: $234.67
+ $34.66 + 1/28/2017 11:58:30 PM  Total in Savings: $269.33
+ $12.67 - 1/28/2017 11:58:41 PM  Total in Savings: $256.66
+ $500.34 + 1/28/2017 11:58:50 PM  Total in Savings: $757.00
+
