@@ -140,7 +140,7 @@ namespace BankAccount
         public void SavingReciept(string reciept)
         {
             Console.WriteLine(recieptSavings);
-            StreamWriter writerSave = new StreamWriter("..\\..\\SavingAccountInfo.txt");
+            StreamWriter writerSave = new StreamWriter("..\\..\\obj\\Debug\\SavingAccountInfo.txt");
             using (writerSave)
             {
                 //write a line

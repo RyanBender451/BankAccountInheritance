@@ -134,7 +134,7 @@ namespace BankAccount
         public void CheckReciept(string reciept)
         {
             Console.WriteLine(recieptChecking);
-            StreamWriter writerCheck = new StreamWriter("..\\..\\CheckingAccountInfo.txt");
+            StreamWriter writerCheck = new StreamWriter("..\\..\\obj\\Debug\\CheckingAccountInfo.txt");
             using (writerCheck)
             {
                 //write a line

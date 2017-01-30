@@ -49,7 +49,7 @@ namespace BankAccount
             do
             {
                 Console.Clear();
-                Console.WriteLine("Welcome to the Savings Menu");
+                Console.WriteLine("Welcome to the Reserve Menu");
                 Console.WriteLine("(1) Add money to the account");
                 Console.WriteLine("(2) Take out money from the account");
                 Console.WriteLine("(3) See how much is in your Account");
@@ -133,7 +133,7 @@ namespace BankAccount
         public void ReserveReciept(string reciept)
         {
             Console.WriteLine(recieptReserve);
-            StreamWriter writerReserve = new StreamWriter("..\\..\\ReserveAccountInfo.txt");
+            StreamWriter writerReserve = new StreamWriter("..\\..\\obj\\Debug\\ReserveAccountInfo.txt");
             using (writerReserve)
             {
                 //write a line
